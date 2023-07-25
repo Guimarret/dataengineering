@@ -1,0 +1,4 @@
+baseURL = 'https://guimarret.github.io/dataengineering/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "PaperMod"
