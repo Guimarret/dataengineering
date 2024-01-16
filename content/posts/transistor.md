@@ -30,4 +30,4 @@ This [depleted area](https://en.wikipedia.org/wiki/Depletion_region) prevent the
 
 To turn it on needs a small positive voltage to the gate, attracting the electron through the gate making them form a conducting channel
 - It makes the transistor on in the one state
-Continuation in [[Logic gates]]
+Continuation in [logic gates]( {{< ref "/posts/logic_gates.md" >}})
