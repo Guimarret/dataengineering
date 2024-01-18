@@ -6,7 +6,7 @@ draft: false
 
 Using the transistor base in here: [transistor]( {{< ref "/posts/transistor.md" >}}). 
 
-I'm gonna talk about logic gates and some basic possibilities like adders, subtractotons, multiplier and divisor. The main idea in these basic posts are trace the way to assembly instructions and so on.
+I'm gonna talk about logic gates and some basic possibilities like adders, subtractor, multiplier and divisor. The main idea in these basic posts are trace the way to assembly instructions and so on.
 
 These logic gates are the lowest level we can reach in the hardware processing, obviously these instructions alone don't create anything really meaninfull but the correct combination can create computer and processing machines of any type (except quantum computer but we're not gonna talk about them today)  
 
