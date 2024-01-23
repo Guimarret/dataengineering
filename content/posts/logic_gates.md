@@ -103,7 +103,7 @@ For each bit we have in the multiplication we got 2 more columns in the truth ta
 
 ## Divider
 
-So for the last we have the divider that take other implications like numbers from the rational field, and this number until now wasn't possible because we didn't got any number different from a integer, and to solve this problem we have to use floats (gonna talk more about in other post but the technical name of the integer problem would be underflow)
+So for the last we have the divider that take other implications like numbers from the rational field, and this number until now wasn't possible because we didn't got any number different from a integer, and to solve this problem we could use floats (gonna talk more about in other post but the technical name of the integer problem would be underflow)
 
 The truth table is the simplest of all:
 ![](/img/divider_truth_table.jpg)
@@ -116,5 +116,5 @@ So to maintain the same schema of the multiplier, we are gonna use the 2 bit div
 
 It's interesting btw that it's necessary only AND and EX-OR logic gates..
 
-The inputs are both 2-bit numbers and the output C's are the quotient, so if we expose the output in some place we get the result (this is a simplified version of real-life utilization because for better approaches we would have to implement floating points and some other points and i think for now that this is enough)
+The inputs are both 2-bit numbers and the output C's are the quotient, so if we expose the output in some place we get the result (this is a simplified version of real-life utilization because for better approaches we probably would have to implement floating points and some other points and i think for now that this is enough)
 
