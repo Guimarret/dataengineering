@@ -20,7 +20,7 @@ p-type
 By the way that doesn't mean they are actually positive and negative but neutral because the electron number of electron and protons inside
 
 ### Transistor are made of P-Type and N-Type doping 
-![transistor](/img/transistor.png)
+![transistor](/img/transistor/transistor.png)
 
 Electron contacts in the ends/edges, there is the electrical contact in the middle isolated by an oxide layer(the gate)
 
