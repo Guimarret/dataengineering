@@ -25,8 +25,19 @@ There are a couple of details here that we have to think about, so the idea in t
 
 ### Flip-Flop version
 
-Also two inputs
+Have 3 inputs:
+
+![](/img/memory/sr-flip-flop-logic-circuit.jpg)
+
+Just for a glance we can tell that the difference is the AND gates in the left and the Clk (clock), the logic addition have the purpose to accept signal only when the clock send the signal, so we can get a tempo of the execution creating a more solid utilization for real world situations.
 
 ### D
 
-Single input and transfer the Data input when the
+In the D type, we change the S input name to D with a reverse logic gate in and the R to E, creating a new output of truth table that it's impossible to have invalid states as before (1|1 and 0|0 input)
+
+![](/img/memory/internal-logic-d-latch.webp)
+
+And the E can be though as the clock for this version.
+
+### JK
+
