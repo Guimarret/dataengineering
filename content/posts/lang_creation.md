@@ -1,7 +1,7 @@
 ---
 title: "Compilers"
 date: 2025-03-21T16:14:08-03:00
-draft: false
+draft: true
 mermaid: true
 ---
 
@@ -60,3 +60,5 @@ flowchart TD
 ```
 
 After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization.
+
+The *CI* part 1 does the parsing using recursive descent parser and directly integrate to the AST,
