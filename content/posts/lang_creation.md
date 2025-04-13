@@ -59,6 +59,32 @@ flowchart TD
     style AG stroke-width:2px,rx:30,ry:30
 ```
 
-After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization.
+After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization:
 
-The *CI* part 1 does the parsing using recursive descent parser and directly integrate to the AST,
+```mermaid
+graph TD
+    A[AST Root] --> B[+]
+    B --> C[a]
+    B --> D[*]
+    D --> E[b]
+    D --> F[c]
+
+    subgraph "LR Parsing Process"
+        P1[Input: a + b * c] --> P2[Token Stream: a, +, b, *, c]
+        P2 --> P3[Shift-Reduce Actions]
+        P3 --> P4[AST Construction]
+    end
+
+    subgraph "Optimization Passes"
+        O1[Constant Folding]
+        O2[Common Subexpression Elimination]
+        O3[Dead Code Elimination]
+    end
+
+    P4 --> A
+    A --> O1
+    O1 --> O2
+    O2 --> O3
+```
+
+The *CI* part 1 does the parsing using recursive descent parser and directly integrate to the AST
