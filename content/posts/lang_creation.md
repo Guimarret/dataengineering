@@ -1,8 +1,8 @@
 ---
 title: "Compilers"
 date: 2025-03-21T16:14:08-03:00
-draft: true
-mermaid: true
+draft: false
+
 ---
 
 So, after a long time i'm back here to show what a studied these days.
@@ -15,8 +15,6 @@ Also my goal with these posts is to synthetize the points and get a easier way t
 
 The first part of the crafting interpreters is good for visualization as Nystrom says, the focus is in the concepts. The creation of the tree-walk interpreter which evaluates to the AST is funny if i can say, because it shows that there is nothing incredible going on, it's just what it is.
 
-
-
 ## Thoughs
 
 ### Lexical analysis
@@ -27,64 +25,11 @@ Jumping in the chapters we get the first contact with lexical analysis, which co
 
 In *Tiger* the parser is made LR (It's important to say here that the book goes deeper in this topic, it shows detailed informations about LL, LR, SLR, LALR, GLR, and the implications of each one, in the end there is this representation)
 
-```mermaid
-flowchart TD
-    classDef roundedCorners rx:20,ry:20
+![](/img/compilers/formal_grammar.svg)
 
-    subgraph FG["Formal Grammars"]
-        subgraph UG["Unambiguous Grammars"]
-            subgraph LLK["LL(k)"]
-                subgraph LL1["LL(1)"]
-                    LL0["LL(0)"]
-                end
-            end
+After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization as show in the image with subexpression elimination:
 
-            subgraph LRK["LR(k)"]
-                subgraph LR1["LR(1)"]
-                    subgraph LALR1["LALR(1)"]
-                        subgraph SLR["SLR"]
-                            LR0["LR(0)"]
-                        end
-                    end
-                end
-            end
-        end
+![](/img/compilers/LR_parsing_optmization.svg)
 
-        AG["Ambiguous Grammars"]
-    end
 
-    class FG,UG,AG,LLK,LRK,LL1,LR1,LALR1,SLR,LL0,LR0 roundedCorners
-    style FG stroke-width:2px,rx:30,ry:30
-    style UG stroke-width:2px,rx:30,ry:30
-    style AG stroke-width:2px,rx:30,ry:30
-```
-
-After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization:
-
-```mermaid
-graph TD
-    A[AST Root] --> B[+]
-    B --> C[a]
-    B --> D[*]
-    D --> E[b]
-    D --> F[c]
-
-    subgraph "LR Parsing Process"
-        P1[Input: a + b * c] --> P2[Token Stream: a, +, b, *, c]
-        P2 --> P3[Shift-Reduce Actions]
-        P3 --> P4[AST Construction]
-    end
-
-    subgraph "Optimization Passes"
-        O1[Constant Folding]
-        O2[Common Subexpression Elimination]
-        O3[Dead Code Elimination]
-    end
-
-    P4 --> A
-    A --> O1
-    O1 --> O2
-    O2 --> O3
-```
-
-The *CI* part 1 does the parsing using recursive descent parser and directly integrate to the AST
+The *CI* part.1 does the parsing using recursive descent and directly integrate to the AST (directly from the functions), the main point of this implementation is the error recovery via sync token consumption
