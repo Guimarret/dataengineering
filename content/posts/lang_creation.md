@@ -32,4 +32,10 @@ After the LR parsing, the ASTs separate the syntactic structure which also enabl
 ![](/img/compilers/LR_parsing_optmization.svg)
 
 
-The *CI* part.1 does the parsing using recursive descent and directly integrate to the AST (directly from the functions), the main point of this implementation is the error recovery via sync token consumption
+The *CI* part.1 does the parsing using recursive descent and directly integrate to the AST (directly from the functions), the main point of this implementation is the error recovery via sync token consumption (That would be like a panic mode which the program begin to discard tokens until reach the a *statement terminator*, the advantage is avoiding cascaded errors and continue parsing to reach more errors).
+
+In part.2 is a bit complex, it compiles directly to bytecode as i said before, in a single pass and the parser emite bytecode instructions while parsing, the advantage is that enable immediate optimization like *[constant folding](https://en.wikipedia.org/wiki/Constant_folding#:~:text=Constant%20folding%20is%20the%20process,are%20known%20at%20compile%20time.)*, and *constant propagation*.
+
+### Error Handling
+
+Also the error messages are runtime stack traces which is not much desirable, but in the end of the day is all about trade-offs
