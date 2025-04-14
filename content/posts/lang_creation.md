@@ -25,7 +25,7 @@ Jumping in the chapters we get the first contact with lexical analysis, which co
 
 In *Tiger* the parser is made LR (It's important to say here that the book goes deeper in this topic, it shows detailed informations about LL, LR, SLR, LALR, GLR, and the implications of each one, in the end there is this representation)
 
-![](/img/compilers/formal_grammar.svg)
+![](/img/compilers/formal_grammar_correct.svg)
 
 After the LR parsing, the ASTs separate the syntactic structure which also enables multiple passes for otimization as show in the image with subexpression elimination:
 
