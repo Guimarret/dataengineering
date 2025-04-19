@@ -47,7 +47,7 @@ Not gonna extend much here because it's kind of boring to be honest, if you are 
 
 ## Semantical analysis
 
-So here it starts to get trickier, and the topic scope starts to get heavier. In semantical analysis, there are some important points like type system, scope resolution, error reporting (relating to the last topic), etc.
+So here it starts to get trickier, and the topic scope starts to get heavier. In semantical analysis, there are some important points like scope resolution, type system, error reporting (relating to the last topic), etc.
 > Type system, this point is a bit too big to get handled in just some little observation in the sub-topic but i will try to make it clarifying.
 
 ### Scope resolution
@@ -138,7 +138,7 @@ So considering the examples let's dig into the important points. If we think tha
   - *let*
   - *var*
 
-That will create different things, for example, the let in javascript will create a block declaration, so it preserves the variable just in this block state and is not imported for insider functions or outside the main function, while the var is usually accessible for all scope depths of the function that is deeper than the original function, and in case of declaration outside functions it becomes global to access technically anywhere in the code, example:
+That will create different scenarios, for example, the let in javascript will create a block declaration, so it preserves the variable just in this block state and is not imported for insider functions or outside the main function, while the var is usually accessible for all scope depths of the function that is deeper than the original function, and in case of declaration outside functions it becomes global to access technically anywhere in the code, example:
 
 ```javascript
 function varScoping() {
@@ -160,4 +160,28 @@ function letScoping() {
 }
 ```
 
-There are also other differences between the let and var but i will talk more in the type checker part.
+There are also other differences between the let and var but i will talk more about it later on.
+
+Also, we can use the const keyword to declare constants that cannot be reassigned. This can help prevent bugs and make code more predictable, if you are interested i also recommend looking for mutability and sharing (because i'm not gonna talk enought about these ones) but for context immutable variables can not be reassigned but could be pointed or copied depending on the type and etc.
+
+There are some strategies to handle scope and variable declaration in functions in different programming languages, and there are some functional programming languages that use lazy evaluation (gonna explain more about this in the optimization part), Haskell is an example, it creates a thunk to catch the environment for then later on in the scope resolution it determines the variable based on this thunk, of course this is a massive simplification but is important for you to know it exists.
+
+So, there are multiple techniques and ways to solve different problems, and for the sake of the blog post i'm gonna move on to the comparison between the implementations in the books:
+
+The *Tiger* book takes the approach of creating hierarchical symbol tables per scope for data structures, assign type, scope and memory location for variable storage and don't support closures.
+
+*CI part.1* Uses stack of hash maps for data structure, annotations for scope depth on the AST nodes and for the closure it catches the variables in heap environments.
+
+*CI part.2* Uses stack of local slots and upvalue tracking for data structure, for variable storage uses slot indices encoded in bytecode and upvalues linked to heap or outer stack frames for closures.
+
+### Type System
+
+The type system is a rule based mechanism that determines the type of something based on the types of its components and the rules of the language. It can be static or dynamic and can be used to catch errors at compile time or runtime. Looks like a simple mechanism but it is complex and powerful because it can prevent errors and optimize code (If you are interested look for type theory and type soundness that will appear a whole world to explore). There is also type inference that consists of automatically deducing the type that should be in some place if there is no declaration (Not going deeper into this point too).
+
+*Tiger* creates a type system for statically typed languages. Formalizes static rules that are enforced during AST transversal, flagging mismatches before the code generation, also the type metadata is embedded in IR (intermediate representation), enabling optimization such as register allocation and dead code elimination. In the second part, the book also shows the Hindley–Milner type system inference and parametric polymorphism (didn't get deeper into these points because found it too hard for the moment, so in the future, i pretend to write some other blog post talking about type system as a separate topic).
+
+*CI part.1* performs runtime type checks and is really simple, the values are Java objects from a base Value class and for dynamic dispatch it uses a visitor pattern to evaluate expression, when it encounters binary operations it dynamically checks types and throws errors if mismatched.
+
+*CI part.2*  values are encoded as a struct with a type tag and a union of possible data (for numbers and strings for example) and that's basically all.
+
+## Garbage collector
