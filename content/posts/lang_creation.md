@@ -1,7 +1,7 @@
 ---
 title: "Compilers"
 date: 2025-03-21T16:14:08-03:00
-draft: true
+draft: false
 ---
 
 So, after a long time, I'm back here to show what i studied these days.
