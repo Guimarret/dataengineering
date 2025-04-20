@@ -186,4 +186,22 @@ The type system is a rule based mechanism that determines the type of something 
 
 ## Garbage collector
 
-Test
+Garbage collector purpose is to free memory that is no longer used by the program. The thing we have to think about is how and when to collect garbage. The *how* part is less abstract at least for me, because there are some simple ways to implement and i'm gonna talk more about that soon.
+
+When the question becomes when it becomes a problem because there are much more points to take in consideration, because the implementations i know are not possible to do in side thread (afaik), it depends directly on the language and the implementation, let's make it simple, if the program have to run the *GC*, the rest of the program is stopped and this can slow down the whole execution, so it's better to avoid it if possible. At the same time if we take too much time to run the *GC* the execution itself it's gonna take longer because naturally will be more garbage to be *collected*, so we have to find a middle point, in the *CI Part.2* it is implemented to run when a certain threshold is reached, that threshold is the allocated bytes be bigger than a arbitrary value (_1025*1025_), there is also a grow factor to the heap in this implementation to increase the memory based on the program execution.
+
+About the how, both the *Tiger* and the *CI Part.2* uses the same implementation of *mark and sweep algorithm*, this algorithm is simple to demonstrate and it's based on two main steps: marking and sweeping (obviously) and consists in marking the reachable objects from the roots (this take as and then sweeping the unreachable ones, creating a scenario with 3 colors, white, gray and black,
+everytime the *GC* runs, it reach all nodes that is initially white with a depth-first search algorithm and mark as gray, then in it runs again and check if there is any node associated with the gray node, if there is anyone, the algorithm marks these as gray and change de gray parent to black, and does this recursively until there is no more gray nodes. When all the nodes are transpassed it remains the black ones and the white ones (these that was never reached and didn't change to gray), the white ones are _collected_.
+
+- Mark and sweep process demonstration (one *GC* run):
+<p>
+  <img src="/img/compilers/mark_sweep_1.svg" width="45%" style="display:inline-block; margin-right:4%;" />
+  <img src="/img/compilers/mark_sweep_2.svg" width="45%" style="display:inline-block;" />
+</p>
+<p>
+  <img src="/img/compilers/mark_sweep_3.svg" width="45%" style="display:inline-block; margin-right:4%;" />
+  <img src="/img/compilers/mark_sweep_4.svg" width="45%" style="display:inline-block;" />
+</p>
+<p align="center">
+  <img src="/img/compilers/mark_sweep_final.svg" width="40%" />
+</p>
