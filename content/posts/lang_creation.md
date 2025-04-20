@@ -185,3 +185,5 @@ The type system is a rule based mechanism that determines the type of something 
 *CI part.2*  values are encoded as a struct with a type tag and a union of possible data (for numbers and strings for example) and that's basically all.
 
 ## Garbage collector
+
+Test
