@@ -1,8 +1,14 @@
-So, after a long time, I'm back here to show what I studied these days.
+---
+title: "Compilers"
+date: 2025-03-21T16:14:08-03:00
+draft: false
+---
+
+So, after a long time, I'm back here to show what i studied these days.
 This time i read the [crafting intepreters](https://craftinginterpreters.com/) and [Tiger book (modern compiler implementation)](http://www.infouem.com.br/wp-content/uploads/2011/03/Modern-Compiler-Implementation-in-C.pdf) to get a better understanding of how compilers and languages work.
 
 ## Introduction
-So far so good, started with the crafting interpreters which was really noob friendly (as intended), I liked it that way because I knew close to nothing about the theme and read one chapter a day and after finishing did the same with the Tiger book which was immensely harder and much more "academic" but even then it was delightful, there is still a LOT that I don't know but I have a slight idea of how to search about at least haha.
+So far so good, started with the crafting interpreters which was really noob friendly (as clearly intended), i liked it that way because i knew close to nothing about the theme and read one chapter a day and after finishing a did the same with the Tiger book which was immensely harder and much more "academic" but even then it was delightful, there is still a LOT that i don't know but i have a slight idea of how to search about at least haha.
 
 Also, my goal with these posts is to synthesize the points and get an easier way to remember in later days.
 
@@ -11,7 +17,7 @@ The first part of the crafting interpreters is good for visualization as Nystrom
 # Thoughs
 
 ## Lexical analysis
-Jumping into the chapters we get the first contact with lexical analysis, which converts the raw code into "something"... There are some parts for this stage, and starting with the parser the one I liked the most is the implementation in the *Tiger* (gonna refer this way to be less repetitive), this one uses a parser generator (really like bison btw) Yacc, that just need a config file which makes everything direct to the point and simple, it converts the source code into [deterministic finite automata(DFA)](https://en.wikipedia.org/wiki/Deterministic_finite_automaton), also it's really important to read the theoretical part of this one because it shows step by step the idea of deterministic *finite* executions.
+Jumping into the chapters we get the first contact with lexical analysis, which converts the raw code into "something"... There are some parts for this stage, and starting with the parser the one i liked the most is the implementation in the *Tiger* (gonna refer this way to be less repetitive), this one uses a parser generator (really like bison btw) Yacc, that just need a config file which makes everything direct to the point and simple, it converts the source code into [deterministic finite automata(DFA)](https://en.wikipedia.org/wiki/Deterministic_finite_automaton), also it's really important to read the theoretical part of this one because it shows step by step the idea of deterministic *finite* executions.
 - Important to say that in *CI* (crafting interpreters) this part is built by "hand" with recursive descent and the difference to the second part is the simplicity, the second integrates into a single-pass compiler (good [source](https://www.geeksforgeeks.org/single-pass-two-pass-and-multi-pass-compilers/) if you don't know what it is) and produces the tokens lazily (Like... on demand, we could say).
 
 ## Parser
@@ -27,17 +33,17 @@ After the LR parsing, the ASTs separate the syntactic structure which also enabl
 
 The *CI* part.1 does the parsing using recursive descent and directly integrates to the AST (directly from the functions), the main point of this implementation is the error recovery via sync token consumption (That would be like a panic mode in which the program begin to discard tokens until reaching the *statement terminator*, the advantage is avoiding cascaded errors and continue parsing to reach more errors).
 
-Part. 2 is a bit complex, it compiles directly to bytecode as I said before, in a single pass and the parser emite bytecode instructions while parsing, the advantage is that enables immediate optimization like *[constant folding](https://en.wikipedia.org/wiki/Constant_folding#:~:text=Constant%20folding%20is%20the%20process,are%20known%20at%20compile%20time.)*, and *constant propagation*.
+Part. 2 is a bit complex, it compiles directly to bytecode as i said before, in a single pass and the parser emite bytecode instructions while parsing, the advantage is that enables immediate optimization like *[constant folding](https://en.wikipedia.org/wiki/Constant_folding#:~:text=Constant%20folding%20is%20the%20process,are%20known%20at%20compile%20time.)*, and *constant propagation*.
 
 ## Error Handling
 
-The *Tiger* error handling in parsers is the worst because they are runtime stack traces, but at the end of the day is all about trade-offs in efficiency at this point, etc, the error recovery is bytecode validation which I'm not gonna talk much because it links to control flow analysis that's gonna be talked later.
+The *Tiger* error handling in parsers is the worst because they are runtime stack traces, but at the end of the day is all about trade-offs in efficiency at this point, etc, the error recovery is bytecode validation which i'm not gonna talk much because it links to control flow analysis that's gonna be talked later.
 
 The *CI part.1* has some nice error handling with some context like "Unexpected token" which makes it easier to debug and fix errors also the debug support is line-number tracking which i particularly appreciate (it can be implemented in other compilers' points and other ways).
 
 The *CI part.2* are generic syntax errors and the debugger uses symbol tables (gonna talk about later).
 
-Not gonna extend much here because it's kind of boring to be honest, if you are actually looking forward to this part I recommend reading the chapters which are fast and are better for getting the details of the implementations but this point is gonna be back in other points, because in some way error handling/recovery will be present in all points of the compilers.
+Not gonna extend much here because it's kind of boring to be honest, if you are actually looking forward to this part i recommend reading the chapters which are fast and are better for getting the details of the implementations but this point is gonna be back in other points, because in some way error handling/recovery will be present in all points of the compilers.
 
 ## Semantical analysis
 
@@ -154,13 +160,13 @@ function letScoping() {
 }
 ```
 
-There are also other differences between the let and var but I will talk more about it later on.
+There are also other differences between the let and var but i will talk more about it later on.
 
 Also, we can use the const keyword to declare constants that cannot be reassigned. This can help prevent bugs and make code more predictable, if you are interested i also recommend looking for mutability and sharing (because i'm not gonna talk enought about these ones) but for context immutable variables can not be reassigned but could be pointed or copied depending on the type and etc.
 
 There are some strategies to handle scope and variable declaration in functions in different programming languages, and there are some functional programming languages that use lazy evaluation (gonna explain more about this in the optimization part), Haskell is an example, it creates a thunk to catch the environment for then later on in the scope resolution it determines the variable based on this thunk, of course this is a massive simplification but is important for you to know it exists.
 
-So, there are multiple techniques and ways to solve different problems, and for the sake of the blog post I'm gonna move on to the comparison between the implementations in the books:
+So, there are multiple techniques and ways to solve different problems, and for the sake of the blog post i'm gonna move on to the comparison between the implementations in the books:
 
 The *Tiger* book takes the approach of creating hierarchical symbol tables per scope for data structures, assign type, scope and memory location for variable storage and don't support closures.
 
@@ -172,11 +178,11 @@ The *Tiger* book takes the approach of creating hierarchical symbol tables per s
 
 The type system is a rule based mechanism that determines the type of something based on the types of its components and the rules of the language. It can be static or dynamic and can be used to catch errors at compile time or runtime. Looks like a simple mechanism but it is complex and powerful because it can prevent errors and optimize code (If you are interested look for type theory and type soundness that will appear a whole world to explore). There is also type inference that consists of automatically deducing the type that should be in some place if there is no declaration (Not going deeper into this point too).
 
-*Tiger* creates a type system for statically typed languages. Formalizes static rules that are enforced during AST transversal, flagging mismatches before the code generation, also the type metadata is embedded in IR (intermediate representation), enabling optimization such as register allocation and dead code elimination. In the second part, the book also shows the Hindley–Milner type system inference and parametric polymorphism (didn't get deeper into these points because found it too hard for the moment, so in the future, I pretend to write some other blog post talking about type system as a separate topic).
+*Tiger* creates a type system for statically typed languages. Formalizes static rules that are enforced during AST transversal, flagging mismatches before the code generation, also the type metadata is embedded in IR (intermediate representation), enabling optimization such as register allocation and dead code elimination. In the second part, the book also shows the Hindley–Milner type system inference and parametric polymorphism (didn't get deeper into these points because found it too hard for the moment, so in the future, i pretend to write some other blog post talking about type system as a separate topic).
 
 *CI part.1* performs runtime type checks and is really simple, the values are Java objects from a base Value class and for dynamic dispatch it uses a visitor pattern to evaluate expression, when it encounters binary operations it dynamically checks types and throws errors if mismatched.
 
-*CI part.2*  values are encoded as a struct with a type tag and a union of possible data (for numbers and strings for example) and that's all.
+*CI part.2*  values are encoded as a struct with a type tag and a union of possible data (for numbers and strings for example) and that's basically all.
 
 ## Garbage collector
 
