@@ -1,7 +1,7 @@
 ---
 title: "2025_reads"
 date: 2025-04-21T19:21:35-03:00
-draft: true
+draft: false
 ---
 
 # Links and book name
