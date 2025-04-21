@@ -6,8 +6,6 @@ draft: false
 
 Email: guimarret@gmail.com
 
-Phone: +55 (11) 97111-1007
-
 LinkedIn: https://www.linkedin.com/in/guilherme-marret
 
 Summary:
