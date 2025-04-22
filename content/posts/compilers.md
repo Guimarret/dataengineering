@@ -47,7 +47,7 @@ The *CI part.2* are generic syntax errors and the debugger uses symbol tables (g
 
 I won’t extend the subject too much here because it's kind of boring to be honest, if you are actually looking forward to this part i recommend reading the chapters. They are short and will provide better implementations but this point will be talked about be back in other points, because in some way error handling/recovery will be present in all points of the compilers.
 
-## Semantical analysis
+## Semantical Analysis
 
 So by this point it starts to get trickier, and the topic scope starts to get more complex. In semantical analysis, there are some important points like scope resolution, type system, error reporting (relating to the last topic), etc.
 > The Type system point is a bit too complex to cover briefly, but I’ll try to break it down clearly.
