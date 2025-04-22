@@ -11,3 +11,8 @@ draft: false
 [Data flow analysis](https://www.youtube.com/watch?v=hBqRY09zJZo)
 - Not that good, missing live variables and busy expression as pointed by a comment
 - Too entry level
+[Lazyness](https://www.youtube.com/watch?v=SnUn1PZDbqQ)
+- That guys know what he is talking about hahah
+- Nice entry-level explanation on thunks btw
+- Really complete video
+- Has a nice shop in the description..
