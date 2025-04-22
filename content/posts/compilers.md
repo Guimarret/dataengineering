@@ -184,7 +184,7 @@ The type system is a rule based mechanism that determines the type of something 
 
 *CI part.1* performs runtime type checks that are really simple. The values are Java objects from a base Value class and it uses a visitor pattern for dynamic dispatch, to evaluate expression. When it encounters binary operations it dynamically checks types and throws errors if they are mismatched.
 
-CI part.2 values are encoded as a struct with a type tag and a union of possible data (for numbers and strings, for example) and that’s basically it.
+*CI part.2* values are encoded as a struct with a type tag and a union of possible data (for numbers and strings, for example) and that’s basically it.
 
 ## Garbage collector
 
