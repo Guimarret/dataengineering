@@ -212,3 +212,8 @@ As to the “how”, both the *Tiger* and the *CI Part.2* use the same implement
 There are other GC types that are usually more complex. In the Tiger book several are introduced, including: Reference counting, generational collection, incremental collection, Baker’s and Cheney algorithm. The most interesting ones, for me, were the generational collection and the Baker’s and Cheney algorithm, which I would recommend you guys to look into and learn more about them.
 
 ## Optimizations
+
+Both book shows some implementations, the *CI* presents two main optimizations, one of them is the
+- NaN Boxing
+- Math: bytecode instructions for common operations
+- Computed Goto
