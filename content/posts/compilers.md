@@ -213,7 +213,14 @@ There are other GC types that are usually more complex. In the Tiger book severa
 
 ## Optimizations
 
-Both book shows some implementations, the *CI* presents two main optimizations, one of them is the
-- NaN Boxing
-- Math: bytecode instructions for common operations
-- Computed Goto
+Both books show some implementations, I'm gonna show some here and don't distinguish between the books.
+
+There is this Optimization that I actually find funny because it got me by surprise. That is the module operator with bitwise AND, in the *CI* he changed the findEntry function that originally used the "%" operator to get the remainder, in the context the function is used a lot in the executions, so it got ~10x faster performance just because it changed the operator!!
+
+The NAN Boxing technique consists in using the NaN value as a marker for empty slots in the hash table, which is good for performance and memory usage but has trade offs when it comes to 64-bit integers and collision floating-points.
+
+Also there are multiple ones referring to Math operations, dead code elimination based on _variable liveness_ , partial redundancy elimination replaces, super instructions using combined opcodes, branch optimizations in GOTO chain collapse, pattern based optimization and many more.
+
+I'm not deep in optimization to explain these ones in a better way so I purposely just put the names here so you search if you want to learn more about them.
+
+That's all, thanks for your time.
