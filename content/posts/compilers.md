@@ -6,6 +6,8 @@ draft: false
 
 So, after a long time, I'm back to show you what I've been studying these past few days. This time, I read [Crafting Interpreters](https://craftinginterpreters.com/) and the [Tiger book (Modern Compiler Implementation)](http://www.infouem.com.br/wp-content/uploads/2011/03/Modern-Compiler-Implementation-in-C.pdf) to get a better understanding of how compilers and programming languages work.
 
+> Disclaimer: There's a lot of gaps and unlinked points but it will get better for other posts.
+
 ## Introduction
 So far so good, I started with reading one chapter a day of the Crafting Interpreters, which was really noob friendly (as clearly intended), I thought that was good, since I knew close to nothing about the topic. After finishing, I did the same with the Tiger book, which was delightful, even though it was immensely harder and much more theoretical. There is still a LOT that I need to learn about, but at least I have a slight idea of how to research it haha.
 
