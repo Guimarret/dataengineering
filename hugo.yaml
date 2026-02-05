@@ -27,9 +27,6 @@ languages:
         - name: Me
           url: curriculum
           weight: 5
-        - name: reads
-          url: 2025_reads
-          weight: 5
 
 outputs:
   home:
